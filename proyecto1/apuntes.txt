@@ -1,0 +1,27 @@
+#Opcion1: Activar entorno pruebas en conda
+conda activate <conda_prueba>
+
+#Listar perfiles conda
+conda evn list
+#Desactivar autolanzamiento conda
+conda config --set auto_activate_base false
+
+
+#Opcion2 entorno vitual 
+#crear entorno 
+python3 -m venv <nombre>
+#activar entorno
+source <nombre>/bin/activate
+#Comando en mi instalación
+source /home/x7y7/x7y7/bin/activate
+
+
+#Iniciar proyecto django
+django-admin startproject <proyecto>
+
+#Activar server
+./manage.py runserver
+
+#Crear estructura del proyecto
+./manager.py startapp <principal>
+
