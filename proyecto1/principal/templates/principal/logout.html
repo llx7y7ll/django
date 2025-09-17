@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Mi Proyecto Django{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>¡Has cerrado sesión correctamente!</h2>
+        <p>Esperamos verte de nuevo pronto.</p>
+        <a href="/principal/home" class="button">Volver al inicio</a>
+    </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 1em;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block extra_js %}
+<script src="{% static 'js/inicio.js' %}"></script>    
+{% endblock %}

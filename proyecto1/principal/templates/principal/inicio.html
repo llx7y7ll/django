@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Mi Proyecto Django{% endblock %}
+
+{% block content %}
+    <section>
+        <h2>¡Bienvenido a nuestro sitio web!</h2>
+        <p>Esta es la página de inicio. Aquí puedes poner información relevante, anuncios o cualquier contenido que quieras que tus usuarios vean primero.</p>
+        <p>Utilizamos el archivo base.html para mantener la misma estructura de cabecera, navegación y pie de página en todo el sitio.</p>
+        <a href="/principal/contacto" class="button">Más información</a>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>Nuestros servicios</h3>
+        <ul>
+            <li>Servicio 1: Una breve descripción de lo que ofrecemos.</li>
+            <li>Servicio 2: Otra descripción.</li>
+            <li>Servicio 3: Y otra más.</li>
+        </ul>
+    </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 1em;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block extra_js %}
+<script src="{% static 'js/inicio.js' %}"></script>    
+{% endblock %}

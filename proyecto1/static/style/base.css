@@ -1,0 +1,121 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    display: block;
+}
+
+.container {
+    width: 80%;
+    margin: 2em auto;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 60vh; /* Mantiene el pie de página abajo */
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.animate-title {
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1.1) rotate(2deg); /* Puedes cambiar los valores para diferentes efectos */
+    color: #ff6347; /* Cambia el color del texto */
+}
+
+
+/* Contenedor del formulario de login */
+#login-form-container {
+    padding: 15px;
+    background-color: #444; /* Un gris un poco más claro que el header */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más oscura para destacar */
+    max-width: 320px;
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+
+    float: right;
+    margin-right: 27px;
+}
+
+/* Estilos para los campos de entrada */
+#login-form-container input[type="text"],
+#login-form-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555; /* Borde oscuro */
+    background-color: #f8f8f8; /* Fondo un poco más claro */
+    color: #333; /* Texto oscuro */
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#login-form-container input[type="text"]:focus,
+#login-form-container input[type="password"]:focus {
+    border-color: #ff6347; /* Color de acento en el foco */
+    outline: none;
+}
+
+/* Estilos para el botón de login */
+#login-form-container button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff6347; /* Usa el color de acento de tu diseño */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#login-form-container button[type="submit"]:hover {
+    background-color: #e05c3c; /* Un tono más oscuro para el hover */
+}
+
+/* Estilos para los mensajes de error */
+#login-form-container .errorlist {
+    list-style: none;
+    padding: 0;
+    margin: -10px 0 10px;
+}
+
+#login-form-container .errorlist li {
+    color: #ff6347; /* Usa el color de acento para los errores */
+    font-size: 14px;
+    text-align: left;
+}

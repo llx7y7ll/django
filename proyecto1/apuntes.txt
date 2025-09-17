@@ -22,6 +22,6 @@ django-admin startproject <proyecto>
 #Activar server
 ./manage.py runserver
 
-#Crear estructura del proyecto
+#Crear estructura de la app del proyecto
 ./manager.py startapp <principal>
 

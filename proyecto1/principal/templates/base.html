@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Proyecto Django{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static 'style/base.css' %}">
+
+    {% block extra_css %}
+    {% endblock %}
+
+</head>
+<body>
+    <header>
+
+        {% if user.is_authenticated %}
+            <p>Hola, {{ user.username }} | <a href="{% url 'logout' %}">Cerrar sesión</a></p>
+        {% else %}
+            <div id="login-form-container">
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    {{ login_form.as_p }}
+                    <button type="submit">Iniciar sesión</button>
+                </form>
+            </div>
+        {% endif %}
+
+        {% block header %}
+        <nav>
+            <h1>Mi Sitio Web</h1>
+            <ul>
+                <li><a href="/principal/home">Inicio</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        {% endblock %}
+    </header>
+
+    <main class="container">
+        
+        
+        {% block content %}
+        {% endblock %}
+
+        <hr>
+        <h3>Existe un usuario de pruebas "prueba" con contraseña "anR34cr1acc.".</h3>
+    </main>
+
+    <footer>
+        {% block footer %}
+        <p>&copy; {% now "Y" %} Mi Proyecto Django. Todos los derechos reservados.</p>
+        {% endblock %}
+    </footer>
+
+        
+       <script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script> 
+       <script src="{% static 'js/base.js' %}"></script> 
+       {% block extra_js %}
+       
+       {% endblock %}
+</body>
+</html>

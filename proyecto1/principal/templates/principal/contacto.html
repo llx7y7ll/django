@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block extra_css %}
+<style>
+    form { margin-top: 20px; }
+    input[type="text"], input[type="email"], textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0 15px 0;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <h1>Contáctanos</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        
+
+        <!-- Renderizado manual de los campos del formulario para mayor control
+        <p>
+            <label for="{{ form.Nombre.id_for_label }}">Tu Nombre:</label>
+            {{ form.Nombre }}
+            {{ form.Nombre.errors }}
+        </p>
+        
+        <p>
+            <label for="{{ form.Correo.id_for_label }}">Tu Correo:</label>
+            {{ form.Correo }}
+            {{ form.Correo.errors }}
+        </p>
+
+        <p>
+            <label for="{{ form.Mensaje.id_for_label }}">Tu Mensaje:</label>
+            {{ form.Mensaje }}
+            {{ form.Mensaje.errors }}
+        </p>
+
+        <p>
+            {{ form.Terminos_y_Condiciones }}
+            <label for="{{ form.Terminos_y_Condiciones.id_for_label }}">{{ form.Terminos_y_Condiciones.label }}</label>
+            {{ form.Terminos_y_Condiciones.errors }}
+        </p>
+        -->
+
+
+        <!-- Renderizado automático de todos los campos del formulario -->
+        {{ form.as_p }}
+
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}
