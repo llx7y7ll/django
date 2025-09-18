@@ -6,35 +6,37 @@
 {% block content %}
     <section>
         <h2>¡Bienvenido a nuestro sitio web!</h2>
-        <p>Esta es la página de inicio. Aquí puedes poner información relevante, anuncios o cualquier contenido que quieras que tus usuarios vean primero.</p>
-        <p>Utilizamos el archivo base.html para mantener la misma estructura de cabecera, navegación y pie de página en todo el sitio.</p>
-        <a href="/principal/contacto" class="button">Más información</a>
+        <p>Esta es la página de inicio. Es un ejemplo de cómo aplicar los conceptos que hemos visto en el curso.</p>
+        <p>Estamos utilizando la <b>herencia de plantillas</b> para mantener la misma estructura de cabecera, navegación y pie de página en todo el sitio, gracias al archivo `base.html`.</p>
+        
+        <div class=center><a href="/contacto" class="button">Formulario de mensajería</a></div>
+        <br><br>
+        
+        <div class="jumbotron">
+            <h1>¡Jquery Activo!</h1>
+            <p>Haz clic en este recuadro para ver jQuery en acción. Revisa /static/js/inicio.js.</p>
+        </div>
+
     </section>
 
     <hr>
 
     <section>
-        <h3>Nuestros servicios</h3>
+        <h3>Curso de Django. Que hemos visto y aplicado en esta web:</h3>
         <ul>
-            <li>Servicio 1: Una breve descripción de lo que ofrecemos.</li>
-            <li>Servicio 2: Otra descripción.</li>
-            <li>Servicio 3: Y otra más.</li>
+            <li>Formularios django mediante un <a href='principal/contacto'>formulario de contacto</a>.</li>
+            <li>Variables de sesión. Guardar y modificar desde el <a href='principal/config'>formulario de configuraciones</a>.</li>
+            <li>Crear y mantener la estructura de templates.</li>
+            <li>Crear context_processors para mantener formularios en varios templates.</li>
+            <li>Acceso al sistema de usuarios predeterminado por django con un sistema de inicio y cierre de sesión disponible en template base.html.</li>
+            <li>Creación de modelos y generación de bases de datos mediante comandos django.</li>
+            <li>Mantenimiento de modelos a mediante el <a href='/admin'>/admin</a>.</li>
         </ul>
     </section>
 {% endblock %}
 
 {% block extra_css %}
-<style>
-    .button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #007BFF;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        margin-top: 1em;
-    }
-</style>
+
 {% endblock %}
 
 

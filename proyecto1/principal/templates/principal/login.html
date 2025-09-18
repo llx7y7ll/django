@@ -5,12 +5,11 @@
 
 {% block content %}
     <section>
-        <h2>¡Has cerrado sesión correctamente!</h2>
-        <p>Esperamos verte de nuevo pronto.</p>
-         <div class=center><a href="/" class="button">Volver al inicio</a></div>
+        <h2>¡Has iniciado sesión correctamente!</h2>
+        <p>Bienvenido, {{ user.username }}. Ahora puedes acceder a todas las funcionalidades de nuestro sitio.</p>
+        <div class=center><a href="/" class="button">Ir al inicio</a></div>
     </section>
 {% endblock %}
-
 
 
 {% block extra_js %}

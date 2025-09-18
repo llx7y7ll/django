@@ -1,7 +1,7 @@
 from django import forms
 from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError
-
+from .models import Autor, Tematica, Articulo, ArticuloAutor
 
 
 class LoginForm(forms.Form):
@@ -42,4 +42,30 @@ class ContactForm(forms.Form):
         return mensaje
     
 
+class ThemeForm(forms.Form):
+    # Opciones de temas disponibles
+    THEME_CHOICES = [
+        ('light', 'Claro'),
+        ('dark', 'Oscuro'),
+        ('blue', 'Azul'),
+        ('green', 'Verde'),
+    ]
+
+    # El campo del formulario es un RadioSelect para que el usuario elija un tema
+    theme = forms.ChoiceField(
+        label="Seleccionar tema",
+        choices=THEME_CHOICES,
+        widget=forms.RadioSelect
+    )
+    
+
 	
+class AutorForm(forms.ModelForm):
+    class Meta:
+        model = Autor
+        fields = '__all__'
+
+class TematicaForm(forms.ModelForm):
+    class Meta:
+        model = Tematica
+        fields = '__all__'

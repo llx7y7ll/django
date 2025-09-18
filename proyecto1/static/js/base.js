@@ -1,5 +1,8 @@
 $(document).ready(function() {
+    
     console.log("base.js cargado");
+    
+    /*
     // Selecciona el título dentro de la cabecera
     const $titulo = $('header h1');
     // Maneja el evento de pasar el cursor sobre el título
@@ -14,5 +17,5 @@ $(document).ready(function() {
         setTimeout(() => {
             $(this).removeClass('animate-title');
         }, 500); // El tiempo de espera debe coincidir con la duración de la animación CSS
-    });
+    });*/
 });

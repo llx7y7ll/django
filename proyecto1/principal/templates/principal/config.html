@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Mi Proyecto Django{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h2>Cambiar Tema de la Aplicación.</h2>
+        <p>Este script utiliza las <b>variables de session</b> para guardar la configuración de tema</p>
+        {{ form.as_p }}
+        <div class=center><button type="submit">Aplicar Tema</button></div>
+    </form>
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+
+
+
+{% block extra_js %}
+<script src="{% static 'js/inicio.js' %}"></script>    
+{% endblock %}

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mi Proyecto Django{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <title>{% block title %}Mi primer sitio web con Django{% endblock %}</title>
     
     <link rel="stylesheet" href="{% static 'style/base.css' %}">
 
@@ -12,11 +13,13 @@
     {% endblock %}
 
 </head>
-<body>
+<body class="{{ current_theme }}">
     <header>
 
         {% if user.is_authenticated %}
-            <p>Hola, {{ user.username }} | <a href="{% url 'logout' %}">Cerrar sesión</a></p>
+            <div id="login-form-container">
+                <p>Hola, {{ user.username }} | <a href="{% url 'logout' %}">Cerrar sesión</a></p>
+            </div>
         {% else %}
             <div id="login-form-container">
                 <form method="post" action="{% url 'login' %}">
@@ -28,12 +31,14 @@
         {% endif %}
 
         {% block header %}
-        <nav>
-            <h1>Mi Sitio Web</h1>
+        
+        <h1>Mi Sitio Web</h1>
+        <nav class="main-nav">
             <ul>
-                <li><a href="/principal/home">Inicio</a></li>
-                <li><a href="#">Acerca de</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/contacto">Mensajes</a></li>
+                <li><a href="/config">Configuraciones</a></li>
+                <li><a href="/admin">Administración</a></li>
             </ul>
         </nav>
         {% endblock %}
@@ -45,8 +50,16 @@
         {% block content %}
         {% endblock %}
 
+        {% if not user.is_authenticated %}
         <hr>
-        <h3>Existe un usuario de pruebas "prueba" con contraseña "anR34cr1acc.".</h3>
+        <div class="mensajeImportante">
+            <!--Existe un usuario de pruebas "prueba" con contraseña "anR34cr1acc.".<br>-->
+            Si es tu primera vez en django puedes crear un usuario usando el comando:<br> 
+            <b>python manage.py createsuperuser</b><br> 
+            Desde la carpeta de proyecto y luego acceder a /admin para crear usuarios.<br>
+            Una vez creado el usuario podrás iniciar sesión en el formulario de la cabecera.
+        </div>
+        {% endif %}
     </main>
 
     <footer>

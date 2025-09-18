@@ -8,3 +8,10 @@ def login_form_context(request):
     """
     form = LoginForm()
     return {'login_form': form}
+
+
+def theme_processor(request):
+    """
+    Inyecta la variable 'current_theme' del contexto de la sesión en todos los templates.
+    """
+    return {'current_theme': request.session.get('theme', 'light')}

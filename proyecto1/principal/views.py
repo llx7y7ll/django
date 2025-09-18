@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.forms import modelformset_factory, inlineformset_factory
+from .models import Autor, Tematica, Articulo, ArticuloAutor
 # Create your views here.
-from .forms import ContactForm, LoginForm  
+from .forms import ContactForm, LoginForm, ThemeForm, AutorForm, TematicaForm
 
 #def formulario_view(request):
 #    form = ContactForm()
@@ -56,16 +58,80 @@ def login_view(request):
             print("Usuario conectado:", user.username)
             login(request, user)
             # Redireccionar al home o a donde desees
-            return redirect('/principal/home') 
+            return redirect('login') 
         else:
             # Si las credenciales no son válidas
             # Puedes añadir un mensaje de error al formulario
             form.add_error(None, "Nombre de usuario o contraseña incorrectos.")
 
     context = {'form': form}
-    return render(request, 'principal/home', context)
+    return render(request, 'principal/login.html', context)
 
 def logout_view(request):
     logout(request)
     print("Usuario desconectado")
-    return redirect('/principal/home') 
+    return render(request, 'principal/logout.html')
+
+
+
+
+def config_view(request):
+
+    print("Cambiando tema...")
+    # Si la solicitud es un POST, procesamos el formulario
+    if request.method == 'POST':
+        form = ThemeForm(request.POST)
+        if form.is_valid():
+            # Obtenemos el tema seleccionado del formulario
+            selected_theme = form.cleaned_data['theme']
+
+            # Guardamos el tema en la variable de sesión
+            request.session['theme'] = selected_theme
+    else:
+        # Si la solicitud es un GET, creamos una instancia del formulario
+        current_theme = request.session.get('theme', 'light')
+        form = ThemeForm(initial={'theme': current_theme})
+
+    # Obtenemos el tema actual de la sesión (si no existe, usamos 'light' por defecto)
+    current_theme = request.session.get('theme', 'light')
+    
+    context = {
+        'form': form,
+        'current_theme': current_theme,
+    }
+
+    return render(request, 'principal/config.html', context)
+
+
+
+
+def publicaciones_view(request):
+    # Creamos un FormSet para el modelo Autor
+    AutorFormSet = modelformset_factory(Autor, form=AutorForm, extra=1)
+    
+    # Creamos un FormSet para el modelo Tematica
+    TematicaFormSet = modelformset_factory(Tematica, form=TematicaForm, extra=1)
+
+    if request.method == 'POST':
+        # Instanciamos los FormSets con los datos del POST
+        autor_formset = AutorFormSet(request.POST, request.FILES, prefix='autores')
+        tematica_formset = TematicaFormSet(request.POST, request.FILES, prefix='tematicas')
+        
+        # Validamos ambos FormSets
+        if autor_formset.is_valid() and tematica_formset.is_valid():
+            autor_formset.save()
+            tematica_formset.save()
+            
+            # Mensaje de éxito o redirección
+            return redirect('publicaciones_view') # Redirige a la misma página para ver los cambios
+    else:
+        # Creamos los FormSets vacíos para el GET request
+        autor_formset = AutorFormSet(prefix='autores')
+        tematica_formset = TematicaFormSet(prefix='tematicas')
+
+    context = {
+        'autor_formset': autor_formset,
+        'tematica_formset': tematica_formset,
+    }
+    
+    return render(request, 'principal/publicaciones.html', context)

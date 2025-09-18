@@ -1,14 +1,74 @@
+/* Definición de variables de color por tema */
+
+/* --- Tema CLARO (por defecto) --- */
+:root, .light {
+    --bg-color: #f4f4f4; /* Color de fondo principal */
+    --text-color: #333; /* Color de texto principal */
+    --container-bg: #fff; /* Fondo de contenedores (cards, secciones) */
+    --header-footer-bg: #333; /* Fondo de la cabecera y el pie de página */
+    --header-footer-text: #fff; /* Color de texto en cabecera y pie */
+    --accent-color: #ff6347; /* Color de acento (botones, títulos) */
+    --accent-hover: #e05c3c; /* Color de acento al pasar el ratón */
+    --border-color: #ccc; /* Color de los bordes y líneas */
+    --highlight-bg: #f7f3e9; /* Fondo de elementos destacados */
+    --highlight-border: #e0c240; /* Borde de elementos destacados */
+}
+
+/* --- Tema OSCURO --- */
+.dark {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --container-bg: #1e1e1e;
+    --header-footer-bg: #272727;
+    --header-footer-text: #fff;
+    --accent-color: #bb86fc; /* Morado claro para contraste */
+    --accent-hover: #a06dfa;
+    --border-color: #444;
+    --highlight-bg: #2e2e2e;
+    --highlight-border: #bb86fc;
+}
+
+/* --- Tema AZUL (ejemplo adicional) --- */
+.blue {
+    --bg-color: #e3f2fd;
+    --text-color: #1a237e;
+    --container-bg: #fff;
+    --header-footer-bg: #0d47a1;
+    --header-footer-text: #fff;
+    --accent-color: #2196f3;
+    --accent-hover: #1976d2;
+    --border-color: #90caf9;
+    --highlight-bg: #bbdefb;
+    --highlight-border: #1565c0;
+}
+
+/* --- Tema VERDE --- */
+.green {
+    --bg-color: #e8f5e9;
+    --text-color: #2e7d32;
+    --container-bg: #f1f8e9;
+    --header-footer-bg: #4caf50;
+    --header-footer-text: #fff;
+    --accent-color: #66bb6a;
+    --accent-hover: #43a047;
+    --border-color: #a5d6a7;
+    --highlight-bg: #c8e6c9;
+    --highlight-border: #388e3c;
+}
+
+/* Estilos generales que usan las variables */
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.5s, color 0.5s;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
     padding: 1em 0;
     text-align: center;
 }
@@ -17,68 +77,139 @@ header h1 {
     margin: 0;
 }
 
-nav ul {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 1em;
+/* --- Estilos para el contenedor principal del menú --- */
+.main-nav {
+  
+    padding: 1em 2em;
+    background-color: var(--header-footer-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
 }
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5em 1em;
-    display: block;
+/* --- Estilos del título del menú --- */
+.main-nav h1 {
+    
+    font-size: 1.5rem;
+    color: var(--header-footer-text);
 }
+
+/* --- Estilos para la lista de enlaces --- */
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* --- Estilos para los enlaces del menú --- */
+.main-nav a {
+    color: var(--header-footer-text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--accent-color);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+section ul li a:visited {
+    color: var(--accent-color);
+}
+
+/* --- Estilos responsivos --- */
+@media (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1em;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        margin-top: 1em;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .main-nav li {
+        width: 100%;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 1em 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+}
+
 
 .container {
     width: 80%;
     margin: 2em auto;
-    background-color: #fff;
+    background-color: var(--container-bg);
     padding: 2em;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-height: 60vh; /* Mantiene el pie de página abajo */
+    min-height: 60vh;
 }
 
 footer {
     text-align: center;
     padding: 1em 0;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--header-footer-bg);
+    color: var(--header-footer-text);
 }
 
 .animate-title {
     transition: transform 0.5s ease-in-out;
-    transform: scale(1.1) rotate(2deg); /* Puedes cambiar los valores para diferentes efectos */
-    color: #ff6347; /* Cambia el color del texto */
+    transform: scale(1.1) rotate(2deg);
+    color: var(--accent-color);
 }
-
 
 /* Contenedor del formulario de login */
 #login-form-container {
+    color: var(--text-color);
     padding: 15px;
-    background-color: #444; /* Un gris un poco más claro que el header */
+    background-color: var(--container-bg);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más oscura para destacar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 320px;
     font-family: Arial, sans-serif;
-    margin: 20px auto;
-
-    float: right;
+    right: -10px;
+    top: 20px;
+    position: absolute;
     margin-right: 27px;
 }
 
-/* Estilos para los campos de entrada */
 #login-form-container input[type="text"],
 #login-form-container input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #555; /* Borde oscuro */
-    background-color: #f8f8f8; /* Fondo un poco más claro */
-    color: #333; /* Texto oscuro */
+    border: 1px solid var(--border-color);
+    background-color: var(--container-bg);
+    color: var(--text-color);
     border-radius: 5px;
     box-sizing: border-box;
     transition: border-color 0.3s;
@@ -86,16 +217,15 @@ footer {
 
 #login-form-container input[type="text"]:focus,
 #login-form-container input[type="password"]:focus {
-    border-color: #ff6347; /* Color de acento en el foco */
+    border-color: var(--accent-color);
     outline: none;
 }
 
-/* Estilos para el botón de login */
 #login-form-container button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #ff6347; /* Usa el color de acento de tu diseño */
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--header-footer-text);
     border: none;
     border-radius: 5px;
     font-weight: bold;
@@ -104,10 +234,9 @@ footer {
 }
 
 #login-form-container button[type="submit"]:hover {
-    background-color: #e05c3c; /* Un tono más oscuro para el hover */
+    background-color: var(--accent-hover);
 }
 
-/* Estilos para los mensajes de error */
 #login-form-container .errorlist {
     list-style: none;
     padding: 0;
@@ -115,7 +244,69 @@ footer {
 }
 
 #login-form-container .errorlist li {
-    color: #ff6347; /* Usa el color de acento para los errores */
+    color: var(--accent-color);
     font-size: 14px;
     text-align: left;
+}
+
+.center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mensajeImportante {
+    margin-top: 50px;
+    padding: 25px;
+    width: 80%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--highlight-bg);
+    border-left: 5px solid var(--highlight-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.mensajeImportante h3 {
+    margin-top: 0;
+    color: var(--highlight-border);
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--highlight-border);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.mensajeImportante p {
+    margin: 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2em 0;
+}
+
+button, .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--container-bg);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1em;
+}
+
+.jumbotron {
+    background-color: var(--highlight-bg);
+    border: 2px solid var(--highlight-border);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
 }
