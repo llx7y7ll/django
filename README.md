@@ -24,8 +24,8 @@ Asegúrate de tener instalado **Python 3.x**.
 
 1.  **Clonar el repositorio**
     ```bash
-    git clone [https://github.com/tu-usuario/nombre-del-repositorio.git](https://github.com/tu-usuario/nombre-del-repositorio.git)
-    cd nombre-del-repositorio
+    git clone https://github.com/llx7y7ll/django
+    cd django
     ```
 2.  **Crear y activar un entorno virtual** (opcional pero muy recomendado)
     
