@@ -58,10 +58,10 @@ Asegúrate de tener instalado **Python 3.x**.
 Sigue estas instrucciones para arrancar la aplicación.
 
 Pasar a la carpeta del poyecto1
-    
-    ```bash
+
+   ```bash
         cd proyecto1
-    ```
+   ```
 
 1.  **Migrar la base de datos**
     ```bash
