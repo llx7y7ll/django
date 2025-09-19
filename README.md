@@ -44,6 +44,7 @@ Asegúrate de tener instalado **Python 3.x**.
 3.  **Instalar las dependencias**
     ```bash
     pip install django
+    pip install django-jquery
     ```
     Si usas un archivo `requirements.txt`:
     ```bash
@@ -55,6 +56,12 @@ Asegúrate de tener instalado **Python 3.x**.
 ## ▶️ Ejecución del proyecto
 
 Sigue estas instrucciones para arrancar la aplicación.
+
+Pasar a la carpeta del poyecto1
+    
+    ```bash
+        cd proyecto1
+    ```
 
 1.  **Migrar la base de datos**
     ```bash
