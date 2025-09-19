@@ -3,6 +3,8 @@
 ¡Bienvenido a este humilde proyecto desarrollado con **Django**! 
 Este gestor de contenido te permite manejar publicaciones, autores y temáticas de una forma intuitiva. Es una base ideal para un blog personal, un portafolio de artículos o un sitio de noticias sencillo.
 
+![Logotipo del proyecto](proyecto1/static/img/captura.png)
+
 ## ✨ Características clave
 
 - **Sistema de autenticación**: Permite a los usuarios iniciar y cerrar sesión de forma segura.
